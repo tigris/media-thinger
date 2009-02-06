@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <title><%= @page_title || title_for_controller_and_action -%></title>
+  <%= stylesheet_link_tag 'screen' %>
+  <%= stylesheet_link_tag 'print', {:media => :print} %>
+  <% for js in %w{prototype application} -%>
+    <%= javascript_include_tag js %>
+  <% end -%>
+  <%= yield :head -%><%# Allow templates to yield head content as well. -%>
+</head>
+<% content_tag :body, :class => classes_for_controller_and_action do %>
+  <% if logged_in? -%>
+    <div id="user-bar">
+      Logged in as <%= link_to_current_user :content_method => :login %>
+      <span id="user-logout">(<%= link_to "Log out", logout_path, { :title => "Log out" } %>)</span>
+    </div>
+  <% else -%>
+    <div class="login-bar">
+      <%= link_to "Log in",  login_path, { :title => "Log in" } %> |
+      <%= link_to "Sign up", signup_path, { :title => "Sign up" } %>
+    </div>
+  <% end -%>
+  <% if flash[:notice] %><div id="flash-success"><%= flash[:notice] %></div><% end -%>
+  <% if flash[:error] %><div id="flash-error"><%= flash[:error] %></div><% end -%>
+  <% if flash[:failure] %><div id="flash-failure"><%= flash[:failure] %></div><% end -%>
+  <div id="content"><%= yield -%></div>
+<% end %>
+</html>

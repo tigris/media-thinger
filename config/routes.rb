@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources 'episodes'
   map.resources 'movies'
 
+  map.home '/', :controller => 'home', :action => 'index'
+
   map.resource :sessions
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'session', :action => 'new'
