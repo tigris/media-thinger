@@ -21,12 +21,14 @@
           <div id="user-bar">
             Currently logged in as<br />
             <%= link_to current_user.name, edit_user_path(current_user) %>
-            <span id="user-logout">(<%= link_to "logout", logout_path, { :title => "Log out" } %>)</span>
           </div>
         <% else -%>
           <div id="login-bar">
-            <%= link_to "Log in",  login_path, { :title => "Log in" } %> |
-            <%= link_to "Sign up", signup_path, { :title => "Sign up" } %>
+            <% form_tag session_path do |f| %>
+              <%= label_tag :login %><%= text_field_tag :login %><br />
+              <%= label_tag :password %><%= password_field_tag :password %><br />
+              <div id="login_button"><%= submit_tag 'Login' %></div>
+            <% end %>
           </div>
         <% end -%>
       </div>
@@ -34,21 +36,27 @@
   </div>
   <div class="container">
     <div class="navigation">
-      <a href="#" title="Home">HOME</a>
-      <a href="#" title="Movies">MOVIES</a>
-      <a href="#" title="Episode">EPISODES</a>
-      <a href="#" title="FAQ">FAQ</a>
-      <a href="#" title="Contact Us">CONTACT US</a> 
+      <%= link_to 'Home', home_path %>
+      <% if logged_in? %>
+        <%= link_to 'Movies', movies_path %>
+        <%= link_to 'Episodes', episodes_path %>
+        <%= link_to 'Logout', logout_path %>
+      <% else %>
+        <%= link_to 'Sign up', signup_path %>
+      <% end %>
       <div class="clearer"><span></span></div>
     </div>
     <div class="main">
       <div class="content">
+        <div id="flash">
         <% if flash[:notice] %><div id="flash-success"><%= flash[:notice] %></div><% end -%>
         <% if flash[:error] %><div id="flash-error"><%= flash[:error] %></div><% end -%>
         <% if flash[:failure] %><div id="flash-failure"><%= flash[:failure] %></div><% end -%>
+        </div>
         <div><%= yield -%></div>
       </div>
-      <div class="sidenav">
+      <div class="clearer"><span></span></div>
+      <!--div class="sidenav">
         <h2>SideNAV</h2>
         <ul>
           <li><a href="#" title="Home">Home</a></li><li><a href="#" title="Downloads">Forest Green </a></li>
@@ -72,12 +80,12 @@
         <br />
       </div>
       <div class="clearer"><span></span></div>
-    </div>
-    <div class="footer">
-      <span id="copyright">&copy; Tigris 2009</span>
-      <span id="motto">Downloading pirated films is stealing. You wouldn't steal a car... Would you?</span>
-      <div class="clearer"><span></span></div>
-    </div>
+    </div-->
+  </div>
+  <div class="footer">
+    <span id="copyright">&copy; Tigris 2009</span>
+    <span id="motto">Downloading pirated films is stealing. You wouldn't steal a car... Would you?</span>
+    <div class="clearer"><span></span></div>
   </div>
 </div>
 <% end %>
