@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.create params[:movie]
+    @movie = Movie.create_from_imdb params[:movie][:imdb]
     @media = @movie.media.create params[:media].merge(:user => current_user)
     redirect_to '/'
   end

@@ -1,0 +1,9 @@
+<%= link_to 'Add', new_movie_path %>
+
+<% form_tag movies_path do |f| %>
+  <div>
+    <%= label_tag :title, 'Title' %><br />
+    <%= text_field_tag :title %>
+  </div>
+  <%= button_for :find %>
+<% end %>

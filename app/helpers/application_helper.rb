@@ -15,6 +15,7 @@ module ApplicationHelper
       when :new      then 'Add'
       when :edit     then 'Save'
       when :register then 'Create'
+      when :find     then 'Find'
     end
     cancel = content_tag :span, link_to('Cancel', '/')
     button = submit_tag text, options
