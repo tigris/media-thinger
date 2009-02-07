@@ -1,0 +1,35 @@
+<div>
+  <%= f.label :imdb, 'IMDB URL' %>
+  <%= f.text_field :imdb %>
+</div>
+
+<fieldset id="manual">
+  <legend>Manual details</legend>
+  <div>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title %>
+  </div>
+</fieldset>
+
+<fieldset id="meta">
+  <legend>Meta info</legend>
+  <div>
+    <%= label :media, :location, 'Location' %>
+    <%= text_field :media, :location %>
+  </div>
+  <div>
+    <%= label :media, :quality, 'Quality' %>
+    <%= select :media, :quality, [
+      ['Choose...', nil],
+      ['Cam (bad)', 1],
+      ['DVD Screener (good with glitches)', 2],
+      ['DVD Rip (good)', 3],
+      ['DVD', 4],
+      ['Blu-ray', 5]
+    ] %>
+  </div>
+  <div>
+    <%= label :media, :watched, 'Seen?' %>
+    <%= check_box :media, :watched %>
+  </div>
+</fieldset>

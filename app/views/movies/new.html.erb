@@ -1,0 +1,6 @@
+<%= error_messages_for :movie, :media %>
+
+<% form_for @movie do |f| -%>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <div><%= button_for :new %></div>
+<% end %>

@@ -9,4 +9,15 @@ module ApplicationHelper
     title.push(controller.action_name.titleize) unless controller.action_name =~ /index/
     title.push(controller.controller_name.singularize.titleize).join(' &raquo; ')
   end
+
+  def button_for(action, options = {})
+    text = case action
+      when :new      then 'Add'
+      when :edit     then 'Save'
+      when :register then 'Create'
+    end
+    cancel = content_tag :span, link_to('Cancel', '/')
+    button = submit_tag text, options
+    content_tag :div, cancel + button
+  end
 end

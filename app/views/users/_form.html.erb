@@ -1,0 +1,32 @@
+<div class="required">
+  <%= label :user, :email, 'E-Mail' %><br/>
+  <%= text_field :user, :email, :disabled => logged_in? %>
+</div>
+
+<div class="required">
+  <%= f.label :name, 'Name' %><br/>
+  <%= f.text_field :name %>
+</div>
+
+<% if logged_in? %>
+<fieldset>
+  <legend>Change Password</legend>
+  <div class="required">
+    <%= label_tag 'current_password', 'Current Password' %><br/>
+    <%= password_field_tag :current_password, nil, :size => 30 %>
+  </div>
+<% end %>
+
+<div class="required">
+  <%= f.label :password, logged_in? ? 'New Password' : 'Password' %><br/>
+  <%= f.password_field :password %>
+</div>
+
+<div class="required">
+  <%= f.label 'password_confirmation', 'Confirm Password' %><br/>
+  <%= f.password_field :password_confirmation %>
+</div>
+
+<% if logged_in? %>
+</fieldset>
+<% end %>

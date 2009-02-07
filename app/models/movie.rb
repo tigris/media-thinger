@@ -1,3 +1,3 @@
 class Movie < ActiveRecord::Base
-  belongs_to :media, :polymorphic => true
+  has_many :media, :class_name => 'Media', :as => :watchable
 end
