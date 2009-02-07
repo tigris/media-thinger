@@ -12,20 +12,73 @@
   <%= yield :head -%><%# Allow templates to yield head content as well. -%>
 </head>
 <% content_tag :body, :class => classes_for_controller_and_action do %>
-  <% if logged_in? -%>
-    <div id="user-bar">
-      Logged in as <%= link_to current_user.name, edit_user_path(current_user) %>
-      <span id="user-logout">(<%= link_to "Log out", logout_path, { :title => "Log out" } %>)</span>
+<div>
+  <div class="top">
+    <div class="header">
+      <div class="left">&nbsp;&nbsp;&nbsp;Media Thinger</div>
+      <div class="right">
+        <% if logged_in? -%>
+          <div id="user-bar">
+            Currently logged in as<br />
+            <%= link_to current_user.name, edit_user_path(current_user) %>
+            <span id="user-logout">(<%= link_to "logout", logout_path, { :title => "Log out" } %>)</span>
+          </div>
+        <% else -%>
+          <div id="login-bar">
+            <%= link_to "Log in",  login_path, { :title => "Log in" } %> |
+            <%= link_to "Sign up", signup_path, { :title => "Sign up" } %>
+          </div>
+        <% end -%>
+      </div>
     </div>
-  <% else -%>
-    <div class="login-bar">
-      <%= link_to "Log in",  login_path, { :title => "Log in" } %> |
-      <%= link_to "Sign up", signup_path, { :title => "Sign up" } %>
+  </div>
+  <div class="container">
+    <div class="navigation">
+      <a href="#" title="Home">HOME</a>
+      <a href="#" title="Movies">MOVIES</a>
+      <a href="#" title="Episode">EPISODES</a>
+      <a href="#" title="FAQ">FAQ</a>
+      <a href="#" title="Contact Us">CONTACT US</a> 
+      <div class="clearer"><span></span></div>
     </div>
-  <% end -%>
-  <% if flash[:notice] %><div id="flash-success"><%= flash[:notice] %></div><% end -%>
-  <% if flash[:error] %><div id="flash-error"><%= flash[:error] %></div><% end -%>
-  <% if flash[:failure] %><div id="flash-failure"><%= flash[:failure] %></div><% end -%>
-  <div id="content"><%= yield -%></div>
+    <div class="main">
+      <div class="content">
+        <% if flash[:notice] %><div id="flash-success"><%= flash[:notice] %></div><% end -%>
+        <% if flash[:error] %><div id="flash-error"><%= flash[:error] %></div><% end -%>
+        <% if flash[:failure] %><div id="flash-failure"><%= flash[:failure] %></div><% end -%>
+        <div><%= yield -%></div>
+      </div>
+      <div class="sidenav">
+        <h2>SideNAV</h2>
+        <ul>
+          <li><a href="#" title="Home">Home</a></li><li><a href="#" title="Downloads">Forest Green </a></li>
+          <li><a href="http://www.flexcms.co.uk/FlexCMS_Documentation.aspx" title="Documentation">Trees </a></li>
+          <li><a href="#" title="FAQs">About Us </a></li>
+          <li><a href="http://www.flexcms.co.uk/FlexCMS_ContactUs.aspx" title="Contact Us">Contact Us </a></li>
+        </ul>
+        <h2>Membership</h2>
+        <ul>
+          <li><a href="#">Login / Register</a></li>
+          <li><a href="#">Forgot password?</a></li>
+        </ul>
+        <h2>FlexCMS Bespoke versions</h2>
+        <ul>
+          <li><a href="http://www.giant-systems.co.uk/">FlexCMS </a></li>
+          <li><a href="http://www.giant-systems.co.uk/Ecommerce.aspx">FlexEcommerce</a></li>
+          <li><a href="http://www.giant-systems.co.uk/casestudies.aspx">FlexCMS portal server </a></li>
+          <li><a href="http://www.giant-systems.co.uk/casestudies.aspx">FlexCMS Intranet </a></li>
+        </ul>
+        <br />
+        <br />
+      </div>
+      <div class="clearer"><span></span></div>
+    </div>
+    <div class="footer">
+      <span id="copyright">&copy; Tigris 2009</span>
+      <span id="motto">Downloading pirated films is stealing. You wouldn't steal a car... Would you?</span>
+      <div class="clearer"><span></span></div>
+    </div>
+  </div>
+</div>
 <% end %>
 </html>
