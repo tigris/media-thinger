@@ -1,4 +1,9 @@
+config/development.sphinx.conf
 log/development.log
+log/searchd.log
+log/searchd.query.log
+log/searchd.development.pid
 db/schema.rb
+db/sphinx/*
 **/.DS_Store
-**/*.swp
+*.swp

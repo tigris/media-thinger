@@ -103,11 +103,14 @@ h2 {
   width: 207px;
 }
 
-.header .right a {
+.header .right .users-name {
   font-size: 1.2em;
   font-weight: bold;
-  text-decoration: none;
+}
+
+.header .right a {
   color: #fff;
+  text-decoration: none;
 }
 
 .header .right a:hover {

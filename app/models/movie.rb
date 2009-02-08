@@ -1,5 +1,12 @@
 class Movie < ActiveRecord::Base
   include Imdbable
-  has_many :media, :class_name => 'Media', :as => :watchable
-  validates_uniqueness_of :imdb
+  define_index do
+    indexes title
+    indexes plot
+    indexes tagline
+    indexes media.watched
+    indexes year
+    has imdb_rating
+    has media.user_id
+  end
 end

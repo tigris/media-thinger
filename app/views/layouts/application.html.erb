@@ -20,7 +20,9 @@
         <% if logged_in? -%>
           <div id="user-bar">
             Currently logged in as<br />
-            <%= link_to current_user.name, edit_user_path(current_user) %>
+            <span class="users-name"><%= current_user.name -%></span><br />
+            ( <%= link_to 'edit', edit_user_path(current_user) -%> |
+              <%= link_to 'logout', logout_path -%> )
           </div>
         <% else -%>
           <div id="login-bar">
@@ -38,9 +40,10 @@
     <div class="navigation">
       <%= link_to 'Home', home_path %>
       <% if logged_in? %>
-        <%= link_to 'Movies', movies_path %>
-        <%= link_to 'Episodes', episodes_path %>
-        <%= link_to 'Logout', logout_path %>
+        <%= link_to 'Add Movie', new_movie_path %>
+        <%= link_to 'Find Movies', movies_path %>
+        <%= link_to 'Add Episode', new_episode_path %>
+        <%= link_to 'Find Episodes', episodes_path %>
       <% else %>
         <%= link_to 'Sign up', signup_path %>
       <% end %>
