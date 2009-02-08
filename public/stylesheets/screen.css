@@ -86,7 +86,6 @@ h2 {
 .header .left, .header .right {
   background-color: #000033;
   color: #fff;
-  color: #FFF;
   height: 105px;
 }
 
@@ -99,9 +98,20 @@ h2 {
 }
 
 .header .right {
+  font-size: 1.1em;
   overflow: auto;
   width: 207px;
+}
 
+.header .right a {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.header .right a:hover {
+  text-decoration: underline;
 }
 
 .header .right div {
