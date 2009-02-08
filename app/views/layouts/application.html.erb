@@ -48,10 +48,10 @@
     </div>
     <div class="main">
       <div class="content">
-        <div id="flash">
-        <% if flash[:notice] %><div id="flash-success"><%= flash[:notice] %></div><% end -%>
-        <% if flash[:error] %><div id="flash-error"><%= flash[:error] %></div><% end -%>
-        <% if flash[:failure] %><div id="flash-failure"><%= flash[:failure] %></div><% end -%>
+        <div id="flash" class="flash">
+        <% if flash[:notice] %><div class="success"><%= flash[:notice] %></div><% end -%>
+        <% if flash[:error] %><div class="error"><%= flash[:error] %></div><% end -%>
+        <% if flash[:failure] %><div class="failure"><%= flash[:failure] %></div><% end -%>
         </div>
         <div><%= yield -%></div>
       </div>

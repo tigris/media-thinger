@@ -7,6 +7,10 @@ class Media < ActiveRecord::Base
   belongs_to :user
   belongs_to :watchable, :polymorphic => true
 
+  validates_uniqueness_of :watchable_id,
+    :scope   => [ :watchable_type, :user_id ],
+    :message => 'is already in your library.'
+
   def movie?
     watchable_type == 'Movie'
   end

@@ -22,7 +22,7 @@ img {
 body {
   background: #dde;
   color: #333;
-  font: normal 62.5% Tahoma,sans-serif;
+  font: normal 62.5% Arial,sans-serif;
 }
 
 p,ul {
@@ -34,14 +34,14 @@ li {
 }
 
 h1 {
-  font: normal 1.8em Tahoma,sans-serif;
+  font: normal 1.3em;
   margin-bottom: 4px;
   color: #005B9C;
   margin: 0 0 7px 0;
 }
 
 h2 {
-  font: normal 1.3em Tahoma,sans-serif;
+  font: normal 1.1em;
   margin-bottom: 4px;
   color: #005B9C;
   margin: 0 0 7px 0;
@@ -238,25 +238,34 @@ h2 {
   float: left;
 }
 
-#flash {
+.flash {
   margin: auto;
   text-align: center;
   width: 75%;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: bold;
-  color: #000;
+  color: #222;
 }
 
-#flash div {
+.flash h2 {
+  color: #222;
+}
+
+.flash div {
   padding: 10px;
 }
 
-#flash-success {
-  border: 5px solid #0F0;
-  background: #0c0;
+.flash .success {
+  border: 5px solid #4CC417;
+  background: #6CC417;
 }
 
-#flash-failure {
-  border: 5px solid #F00;
-  background: #c00;
+.flash .error {
+  border: 5px solid #F88017;
+  background: #E56717;
+}
+
+.flash .failure {
+  border: 5px solid #C24641;
+  background: #800517;
 }

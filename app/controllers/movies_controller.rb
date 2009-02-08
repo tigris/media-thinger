@@ -17,11 +17,21 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @media = Media.new
   end
 
   def create
-    @movie = Movie.create_from_imdb params[:movie][:imdb]
+    unless imdb_id = parse_imdb_id(params[:movie][:imdb])
+      flash[:failure] = 'Not a valid IMDB URL.'
+      redirect_to new_movie_path
+    end
+    @movie = Movie.find_by_imdb(imdb_id) || Movie.create_from_imdb(imdb_id)
     @media = @movie.media.create params[:media].merge(:user => current_user)
-    redirect_to '/'
+    if @media.errors
+      render :action => 'new'
+    else
+      flash[:notice] = 'Movie successully added to your library'
+      redirect_to '/'
+    end
   end
 end

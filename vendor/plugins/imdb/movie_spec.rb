@@ -32,6 +32,10 @@ describe ImdbMovie, " after a Imdb.find_by_id returns it" do
     @movie.title.should eql('Ratatouille')
   end
 
+  it 'should have a year' do
+    @movie.year.should eql('2007')
+  end
+
   it "should have a release date" do
     @movie.release_date.should eql(Date.new(2007, 06, 29))
   end
@@ -63,11 +67,20 @@ describe ImdbMovie, " after a Imdb.find_by_id returns it" do
     @movie.writers[1].role.should eql('story');
   end
 
-  it "should have five genres" do
+  it "should have three genres" do
     @movie.genres.length.should == 3
     @movie.genres[0].name.should eql('Animation');
     @movie.genres[1].name.should eql('Comedy');
     @movie.genres[2].name.should eql('Family');
+  end
+
+  it 'should have five plot keywords' do
+    @movie.plot_keywords.length.should == 5
+    @movie.plot_keywords[0].name.should eql('Rat');
+    @movie.plot_keywords[1].name.should eql('Chef');
+    @movie.plot_keywords[2].name.should eql('Restaurant');
+    @movie.plot_keywords[3].name.should eql('Paris');
+    @movie.plot_keywords[4].name.should eql('Cooking');
   end
 
   it "should have a tagline" do

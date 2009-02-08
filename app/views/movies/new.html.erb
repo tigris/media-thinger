@@ -1,4 +1,4 @@
-<%= error_messages_for :movie, :media %>
+<%= errors_for [ @movie, @media ], 'movie' %>
 
 <% form_for @movie do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } %>
