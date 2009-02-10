@@ -3,7 +3,13 @@ class Series < ActiveRecord::Base
   validates_uniqueness_of :imdb
 
   def season(season)
-    # TODO: this will actually fetch all then limit, should limit with SQL using find_by_?
-    episodes.select{|e| e.season = season}
+    episodes.find(:all, :conditions => { :season => season })
+  end
+
+  def self.create_from_imdb(imdb)
+    create({
+      :imdb  => imdb.id,
+      :title => imdb.title
+    })
   end
 end

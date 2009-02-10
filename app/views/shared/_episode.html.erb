@@ -1,0 +1,7 @@
+<li>
+  <%= link_to episode.series.title, series_path(episode.series) -%>
+  <%= episode.title -%> (<%= episode.first_aired.strftime('%Y-%m-%d') -%>)<br />
+  Running Time: <%= episode.runtime -%><br />
+  Tags: <%= episode.genres.gsub('|', ', ') -%><br />
+  <span class="plot"><%= truncate episode.plot, 150, link_to('...(more)', episode_path(episode)) -%></span>
+</li>

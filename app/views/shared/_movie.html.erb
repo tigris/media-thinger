@@ -1,6 +1,6 @@
 <li>
   <%= movie.title -%> (<%= movie.year -%>)<br />
   Running Time: <%= movie.runtime -%><br />
-  Tags: <%= movie.genres.sub('|', ', ') -%><br />
+  Tags: <%= movie.genres.gsub('|', ', ') -%><br />
   <span class="plot"><%= truncate movie.plot, 150, link_to('...(more)', movie_path(movie)) -%></span>
 </li>
