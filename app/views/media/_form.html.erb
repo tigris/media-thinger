@@ -4,12 +4,12 @@
 </div>
 
 <div>
-  <%= label :media, :location, 'Location' %>
-  <%= text_field :media, :location %>
+  <%= f.label :location, 'Location' %>
+  <%= f.text_field :location %>
 </div>
 <div>
-  <%= label :media, :quality, 'Quality' %>
-  <%= select :media, :quality, [
+  <%= f.label :quality, 'Quality' %>
+  <%= f.select :quality, [
     ['Choose...', nil],
     ['Cam (bad)', 1],
     ['DVD Screener (good with glitches)', 2],
@@ -19,6 +19,6 @@
   ] %>
 </div>
 <div>
-  <%= label :media, :watched, 'Seen?' %>
-  <%= check_box :media, :watched %>
+  <%= f.label :watched, 'Seen?' %>
+  <%= f.check_box :watched %>
 </div>

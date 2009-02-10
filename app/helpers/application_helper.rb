@@ -26,13 +26,13 @@ module ApplicationHelper
   # wanna change a couple things.
   def errors_for(objects, name = nil)
     objects = [ objects ].flatten
+    errors  = objects.map{|o| o.errors.full_messages}.flatten
+    return if errors.empty?
+
     name = objects.first.class.downcase.pluralize if name.nil?
 
-    header = content_tag :h2, "The following prohibited this #{name} from being saved:"
-
-    errors = objects.map{|o| o.errors.full_messages}.flatten.map{|e| content_tag :li, e }
-    errors = content_tag :ul, errors
-    errors.sub! /Watchable/, 'Record'
+    header = content_tag(:h2, "The following prohibited this #{name} from being saved:")
+    errors = content_tag(:ul, errors.map{|e| content_tag :li, e }).sub(/Watchable/, 'Record')
 
     content_tag(:div, content_tag(:div, header + errors, :class => 'error'), :class => 'flash')
   end

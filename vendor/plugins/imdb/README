@@ -1,18 +1,17 @@
-A simple ruby library to scrape IMDB
+== Usage
 
-USAGE:
+A simple ruby library to scrape IMDB
 
 require 'Imdb'
 
-movie = Imdb.find_movie_by_id('tt1099212')
+movie = Imdb.find(1099212)
 
-puts "IMDB ID: #{movie.imdb_id}"
+puts "IMDB ID: #{movie.id}"
 puts "Title: #{movie.title}"
 puts "Rating: #{movie.rating}"
 puts "Release Date: #{movie.release_date}"
 puts "Tagline: #{movie.tagline}"
 puts "Plot: #{movie.plot}"
-puts "Runtime: #{movie.runtime}"
 movie.directors.each do |director|
         puts "Director: #{director.name}"
 end
@@ -20,9 +19,14 @@ movie.writers.each do |writer|
         puts "Writer: #{writer.name}"
 end
 movie.genres.each do |genre|
-        puts "Genre: #{genre.name}"
+        puts "Genre: #{genre}"
 end
 puts "Poster URL: #{movie.poster_url}"
 
-Thats about all it does. its simple. I only made it to work with another project.
-Thanks to 'We <} Code' for the jump start via http://www.weheartcode.com/2007/04/03/scraping-imdb-with-ruby-and-hpricot/
+Thanks to 'maddox' for the jump start via http://github.com/maddox
+
+== Development
+
+The tests require thoughtbot-shoulda to run.
+
+Needs some gem specs and RDOC, i'm lazy.

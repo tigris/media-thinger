@@ -1,0 +1,5 @@
+<% if entry.is_a? Movie %>
+  <%= render :partial => 'shared/movie', :locals => { :movie => entry } %>
+<% else %>
+  <%= render :partial => 'shared/episode', :locals => { :episode => entry } %>
+<% end %>

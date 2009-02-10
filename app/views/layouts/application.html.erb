@@ -40,10 +40,8 @@
     <div class="navigation">
       <%= link_to 'Home', home_path %>
       <% if logged_in? %>
-        <%= link_to 'Add Movie', new_movie_path %>
-        <%= link_to 'Find Movies', movies_path %>
-        <%= link_to 'Add Episode', new_episode_path %>
-        <%= link_to 'Find Episodes', episodes_path %>
+        <%= link_to 'Add', new_media_instance_path %>
+        <%= link_to 'Find', media_path %>
       <% else %>
         <%= link_to 'Sign up', signup_path %>
       <% end %>

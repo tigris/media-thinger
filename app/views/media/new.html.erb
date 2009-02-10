@@ -1,6 +1,6 @@
-<%= errors_for [ @movie, @media ], 'movie' %>
+<%= errors_for @media, 'entry' %>
 
-<% form_for @movie do |f| -%>
+<% form_for @media, :url => media_path do |f| -%>
   <%= render :partial => 'form', :locals => { :f => f } %>
   <div><%= button_for :new %></div>
 <% end %>

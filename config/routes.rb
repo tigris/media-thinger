@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources 'users'
   map.resources 'episodes'
   map.resources 'movies'
+  map.resources 'media', :singular => 'media_instance'
 
   map.home '/', :controller => 'home', :action => 'index'
 
